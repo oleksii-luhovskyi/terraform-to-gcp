@@ -9,7 +9,7 @@ terraform {
   backend "gcs" {
     bucket = "state-dev-storage-bucket-tf"
     prefix = "tf-practice"
-    credentials = file("terraform-gcp-jenkins-project-2b58b9d2de0e.json")
+    credentials = "terraform-gcp-jenkins-project-2b58b9d2de0e.json"
   }
 }
 
