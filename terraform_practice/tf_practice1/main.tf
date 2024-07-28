@@ -1,5 +1,5 @@
 module "gcp_instance" {
   source = "./instance"
 
-  INSTANCE_NAME = "instance_via_terraform"
+  INSTANCE_NAME = "instance-via-terraform"
 }
