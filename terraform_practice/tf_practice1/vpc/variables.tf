@@ -20,7 +20,7 @@ variable "SUB_NAME" {
 
 variable "SUB_REGION" {
   type = string
-  default = "us-east1"
+  default = "us-central1-b"
 }
 
 variable "SUB_PRIVATE_G_ACCESS" {
