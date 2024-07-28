@@ -14,7 +14,7 @@ terraform {
 }
 
 provider "google" {
-  credentials = file("terraform-gcp-jenkins-project-2b58b9d2de0e.json")
+  credentials = "terraform-gcp-jenkins-project-2b58b9d2de0e.json"
 
   project = "terraform-gcp-jenkins-project"
   region = "us-east1"
