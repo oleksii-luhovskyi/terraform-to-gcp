@@ -33,7 +33,7 @@ variable "BOOT_DISK_AD" {
 }
 
 variable "SERVICE_ACCOUNT_EMAIL" {
-  default = "gcp-to-terraform@terraform-gcp-jenkins-project.iam.gserviceaccount.com"
+  default = "gcp-wtih-terrraform@terraform-gcp-jenkins-project.iam.gserviceaccount.com"
 }
 
 variable "SA_SCOPES" {
