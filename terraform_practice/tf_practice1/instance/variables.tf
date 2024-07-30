@@ -10,7 +10,7 @@ variable "INSTANCE_ZONE" {
 
 variable "INSTANCE_MACHINE_TYPE" {
   type = string
-  default = "n1-standard-1"
+  default = "e2-medium"
 }
 
 variable "INSTANCE_ALLOW_STOP_FOR_UPDATE" {
