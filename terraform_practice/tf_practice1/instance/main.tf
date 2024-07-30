@@ -63,7 +63,3 @@ resource "google_compute_attached_disk" "attach-disk" {
   disk     = module.disk.gc_disk_id
   instance = google_compute_instance.compute_instance.id
 }
-
-output "appeared-key" {
-  value = "jenkinsUser4:${file("key-file.txt")} info"
-}
