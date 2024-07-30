@@ -12,7 +12,7 @@ resource "google_compute_subnetwork" "custom_subnet" {
 }
 
 resource "google_compute_firewall" "allow-http" {
-  name    = var.FIREWALL_NAME
+  name    = var.FIREWALL_TCP_NAME
   network = google_compute_network.custom_compute_network.id
 
   allow {
@@ -25,7 +25,7 @@ resource "google_compute_firewall" "allow-http" {
 }
 
 resource "google_compute_firewall" "allow-icmp" {
-  name    = var.FIREWALL_NAME
+  name    = var.FIREWALL_ICMP_NAME
   network = google_compute_network.custom_compute_network.id
 
   allow {

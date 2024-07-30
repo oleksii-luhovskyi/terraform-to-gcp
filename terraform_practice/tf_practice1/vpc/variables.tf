@@ -28,14 +28,19 @@ variable "SUB_PRIVATE_G_ACCESS" {
   default = true
 }
 
-variable "FIREWALL_NAME" {
+variable "FIREWALL_ICMP_NAME" {
   type = string
   default = "allow-icmp"
 }
 
+variable "FIREWALL_TCP_NAME" {
+  type = string
+  default = "allow-tcp"
+}
+
 variable "FIREWALL_RANGES" {
   type = list(string)
-  default = ["194.44.179.51/32", "213.174.29.154/32"]
+  default = ["157.230.48.41/32", "213.174.29.16/32"]
 }
 
 variable "FIREWALL_ALLOW_ICMP_PROTOCOL" {
