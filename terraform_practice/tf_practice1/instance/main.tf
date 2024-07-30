@@ -38,13 +38,18 @@ resource "google_compute_instance" "compute_instance" {
     scopes = var.SA_SCOPES
   }
 
+  metadata = {
+    ssh-keys = file("key-file.txt")
+  }
+
   metadata_startup_script = <<-EDT
     #! /bin/bash
     sudo apt-get update
-    sudo apt-get install -y apache2
-    sudo systemctl start apache2
-    sudo systemctl status apache2
-    sudo bash -c 'echo "Hello, World! This is a terraform managed GCP instance" > /var/www/html/index.html'
+    sudo apt-get install -y openjdk-17-jdk
+    sudo apt-get install -y wget
+    sudo apt-get install -y git
+
+#    sudo bash -c 'echo "Hello, World! This is a terraform managed GCP instance" > /var/www/html/index.html'
   EDT
 
   lifecycle {
