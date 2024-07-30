@@ -11,7 +11,7 @@ resource "google_compute_subnetwork" "custom_subnet" {
   private_ip_google_access = var.SUB_PRIVATE_G_ACCESS
 }
 
-resource "google_compute_firewall" "allow-http" {
+resource "google_compute_firewall" "allow-tcp" {
   name    = var.FIREWALL_TCP_NAME
   network = google_compute_network.custom_compute_network.id
 
@@ -24,13 +24,13 @@ resource "google_compute_firewall" "allow-http" {
   target_tags   = var.TARGET_TAGS
 }
 
-resource "google_compute_firewall" "allow-icmp" {
-  name    = var.FIREWALL_ICMP_NAME
-  network = google_compute_network.custom_compute_network.id
-
-  allow {
-    protocol = var.FIREWALL_ALLOW_ICMP_PROTOCOL
-  }
-
-  source_ranges = var.FIREWALL_RANGES
-}
+#resource "google_compute_firewall" "allow-icmp" {
+#  name    = var.FIREWALL_ICMP_NAME
+#  network = google_compute_network.custom_compute_network.id
+#
+#  allow {
+#    protocol = var.FIREWALL_ALLOW_ICMP_PROTOCOL
+#  }
+#
+#  source_ranges = var.FIREWALL_RANGES
+#}
