@@ -38,9 +38,14 @@ variable "FIREWALL_RANGES" {
   default = ["194.44.179.51/32", "213.174.29.154/32"]
 }
 
-variable "FIREWALL_ICMP" {
+variable "FIREWALL_ALLOW_ICMP_PROTOCOL" {
   type = string
   default = "icmp"
+}
+
+variable "FIREWALL_ALLOW_TCP_PROTOCOL" {
+  type = string
+  default = "tcp"
 }
 
 variable "SUB_ALLOW_PORTS" {
