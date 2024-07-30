@@ -40,3 +40,8 @@ variable "SA_SCOPES" {
   type = list(string)
   default = ["cloud-platform"]
 }
+
+variable "TARGET_TAGS" {
+  type = list(string)
+  default = ["http-server"]
+}

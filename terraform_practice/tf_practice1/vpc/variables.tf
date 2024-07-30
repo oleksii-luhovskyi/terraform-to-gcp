@@ -42,3 +42,13 @@ variable "FIREWALL_ICMP" {
   type = string
   default = "icmp"
 }
+
+variable "SUB_ALLOW_PORTS" {
+  type = list(string)
+  default = ["80", "443"]
+}
+
+variable "TARGET_TAGS" {
+  type = list(string)
+  default = ["http-server"]
+}

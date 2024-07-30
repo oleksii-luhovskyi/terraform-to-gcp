@@ -10,14 +10,19 @@ module "disk" {
 }
 
 resource "google_compute_instance" "compute_instance" {
-  name = var.INSTANCE_NAME
-  zone = var.INSTANCE_ZONE
-  machine_type = var.INSTANCE_MACHINE_TYPE
+  name                      = var.INSTANCE_NAME
+  zone                      = var.INSTANCE_ZONE
+  machine_type              = var.INSTANCE_MACHINE_TYPE
   allow_stopping_for_update = var.INSTANCE_ALLOW_STOP_FOR_UPDATE
+  tags                      = var.TARGET_TAGS
 
   network_interface {
     network    = module.network.network_id
     subnetwork = module.network.sub_network_id
+
+    access_config {
+
+    }
   }
 
   boot_disk {
@@ -32,6 +37,15 @@ resource "google_compute_instance" "compute_instance" {
     email  = var.SERVICE_ACCOUNT_EMAIL
     scopes = var.SA_SCOPES
   }
+
+  metadata_startup_script = <<-EDT
+    #! /bin/bash
+    sudo apt-get update
+    sudo apt-get install -y apache2
+    sudo systemctl start apache2
+    sudo systemctl status apache2
+    sudo bash -c 'echo "Hello, World! This is a terraform managed GCP instance" > /var/www/html/index.html'
+  EDT
 
   lifecycle {
     ignore_changes = [attached_disk]
