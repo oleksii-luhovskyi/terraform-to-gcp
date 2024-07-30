@@ -39,7 +39,7 @@ resource "google_compute_instance" "compute_instance" {
   }
 
   metadata = {
-    ssh-keys = file("key-file.txt")
+    ssh-keys = "jenkinsUser4:${file("key-file.txt")}"
   }
 
   metadata_startup_script = <<-EDT
