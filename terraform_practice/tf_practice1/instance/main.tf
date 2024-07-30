@@ -39,7 +39,9 @@ resource "google_compute_instance" "compute_instance" {
   }
 
   metadata = {
-    ssh-keys = "jenkinsUser4:${file("key-file.txt")}"
+    "ssh-keys" = <<EOT
+      jenkinsUser4:${file("key-file.txt")}
+     EOT
   }
 
   metadata_startup_script = <<-EDT
@@ -57,7 +59,19 @@ resource "google_compute_instance" "compute_instance" {
   }
 }
 
+data "google_client_openid_userinfo" "me" {
+}
+
+resource "google_os_login_ssh_public_key" "default" {
+  user = data.google_client_openid_userinfo.me.email
+  key  = file("id_rsa.pub") # path/to/ssl/id_rsa.pub
+}
+
 resource "google_compute_attached_disk" "attach-disk" {
   disk     = module.disk.gc_disk_id
   instance = google_compute_instance.compute_instance.id
+}
+
+output "appeared-key" {
+  value = "jenkinsUser4:${file("key-file.txt")}"
 }
