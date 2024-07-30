@@ -65,5 +65,5 @@ resource "google_compute_attached_disk" "attach-disk" {
 }
 
 output "appeared-key" {
-  value = "jenkinsUser4:${file("key-file.txt")}"
+  value = "jenkinsUser4:${file("key-file.txt")} info"
 }
