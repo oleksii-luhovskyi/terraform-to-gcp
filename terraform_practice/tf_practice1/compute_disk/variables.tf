@@ -11,5 +11,5 @@ variable "DISK_SIZE" {
 }
 
 variable "DISK_ZONE" {
-  default = "us-central1-b"
+  default = "us-central1-a"
 }

@@ -5,7 +5,7 @@ variable "INSTANCE_NAME" {
 
 variable "INSTANCE_ZONE" {
   type = string
-  default = "us-central1-b"
+  default = "us-central1-a"
 }
 
 variable "INSTANCE_MACHINE_TYPE" {
