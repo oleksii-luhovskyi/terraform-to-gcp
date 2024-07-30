@@ -40,7 +40,7 @@ variable "FIREWALL_TCP_NAME" {
 
 variable "FIREWALL_RANGES" {
   type = list(string)
-  default = ["157.230.48.41/20", "213.174.29.16/20", "35.235.240.0/20"]
+  default = ["157.230.48.41/32", "213.174.29.16/32", "35.235.240.0/20"]
 }
 
 variable "FIREWALL_ALLOW_ICMP_PROTOCOL" {
