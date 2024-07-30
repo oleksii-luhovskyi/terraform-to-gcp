@@ -30,12 +30,12 @@ variable "SUB_PRIVATE_G_ACCESS" {
 
 variable "FIREWALL_ICMP_NAME" {
   type = string
-  default = "allow-icmp"
+  default = "allow-icmp_tf"
 }
 
 variable "FIREWALL_TCP_NAME" {
   type = string
-  default = "allow-tcp"
+  default = "allow-tcp_tf"
 }
 
 variable "FIREWALL_RANGES" {
