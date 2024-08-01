@@ -45,3 +45,13 @@ variable "TARGET_TAGS" {
   type = list(string)
   default = ["http-server"]
 }
+
+//DATA FILE
+
+variable "DATA_FILE_NAME" {
+  default = "key-file.txt"
+}
+
+variable "DATA_USER" {
+  default = "jenkinsUser4"
+}

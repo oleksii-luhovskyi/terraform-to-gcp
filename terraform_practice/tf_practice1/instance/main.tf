@@ -9,6 +9,10 @@ module "disk" {
   source = "../compute_disk"
 }
 
+data "local_file" "ssh_key_file" {
+  filename = var.DATA_FILE_NAME
+}
+
 resource "google_compute_instance" "compute_instance" {
   name                      = var.INSTANCE_NAME
   zone                      = var.INSTANCE_ZONE
@@ -39,7 +43,9 @@ resource "google_compute_instance" "compute_instance" {
   }
 
   metadata = {
-    "ssh-keys" = "jenkinsUser4:${file("key-file.txt")}"
+    ssh-keys = <<EOF
+    ${var.DATA_USER}:${data.local_file.ssh_key_file.content}
+    EOF
   }
 
   metadata_startup_script = <<-EDT
