@@ -43,9 +43,7 @@ resource "google_compute_instance" "compute_instance" {
   }
 
   metadata = {
-    ssh-keys = <<EOF
-    ${var.DATA_USER}:${data.local_file.ssh_key_file.content}
-    EOF
+    ssh-keys = "${var.DATA_USER}:${data.local_file.ssh_key_file.content}"
   }
 
   metadata_startup_script = <<-EDT
@@ -60,6 +58,14 @@ resource "google_compute_instance" "compute_instance" {
 
   lifecycle {
     ignore_changes = [attached_disk]
+  }
+}
+
+resource "google_compute_project_metadata" "metadata" {
+  name = "additional-metadata"
+  project = "terraform-gcp-jenkins-project"
+  metadata = {
+    ssh-keys = "${var.DATA_USER}:${data.local_file.ssh_key_file.content}"
   }
 }
 

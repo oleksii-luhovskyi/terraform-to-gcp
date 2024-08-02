@@ -1,3 +1,3 @@
 output "appeared-key" {
-  value = "jenkinsUser4:${file("key-file.txt")}"
+  value = data.local_file.ssh_key_file.content
 }
