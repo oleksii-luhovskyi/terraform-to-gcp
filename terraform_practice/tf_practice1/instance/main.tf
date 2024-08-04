@@ -46,15 +46,7 @@ resource "google_compute_instance" "compute_instance" {
     ssh-keys = "${var.DATA_USER}:${data.local_file.ssh_key_file.content}"
   }
 
-  metadata_startup_script = <<-EDT
-    #! /bin/bash
-    sudo apt-get update
-    sudo apt-get install -y openjdk-17-jdk
-    sudo apt-get install -y wget
-    sudo apt-get install -y git
-
-#    sudo bash -c 'echo "Hello, World! This is a terraform managed GCP instance" > /var/www/html/index.html'
-  EDT
+  metadata_startup_script = var.INSTANCE_STARTUP_METADATA
 
   lifecycle {
     ignore_changes = [attached_disk]

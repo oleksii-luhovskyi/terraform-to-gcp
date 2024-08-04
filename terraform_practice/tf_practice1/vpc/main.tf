@@ -23,14 +23,3 @@ resource "google_compute_firewall" "allow-tcp" {
   source_ranges = var.FIREWALL_RANGES
   target_tags   = var.TARGET_TAGS
 }
-
-#resource "google_compute_firewall" "allow-icmp" {
-#  name    = var.FIREWALL_ICMP_NAME
-#  network = google_compute_network.custom_compute_network.id
-#
-#  allow {
-#    protocol = var.FIREWALL_ALLOW_ICMP_PROTOCOL
-#  }
-#
-#  source_ranges = var.FIREWALL_RANGES
-#}

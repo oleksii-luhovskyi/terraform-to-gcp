@@ -46,6 +46,25 @@ variable "TARGET_TAGS" {
   default = ["http-server"]
 }
 
+variable "INSTANCE_STARTUP_METADATA" {
+  type = string
+  default = <<-EDT
+    #! /bin/bash
+    sudo apt-get update
+    sudo apt-get install -y openjdk-17-jdk
+    sudo apt-get install -y wget
+    sudo apt-get install -y git
+
+    sudo mkdir /usr/bin/application
+    sudo groupadd deploy_group
+    sudo chown :deploy_group /usr/bin/application
+    sudo chmod g+rwx /usr/bin/application
+    sudo usermod -aG deploy_group oleksii_luhovsky_rd
+
+    groups  oleksii_luhovsky_rd
+  EDT
+}
+
 //DATA FILE
 
 variable "DATA_FILE_NAME" {
